@@ -1,26 +1,99 @@
 {
-  "name": "fedtools",
-  "version": "0.0.1",
-  "description": "前端开发工具",
+  "name": "br-bid",
+  "version": "0.1.13",
+  "description": "百融-前端开发工具",
   "main": "index.js",
-  "bin": { "fedtools": "bin/index.js" },
+  "bin": {
+    "fedtools": "bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --harmony ./bin/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bluelight598/fedtools.git"
+    "url": "git+https://github.com/Bairongs/br-fedtools.git"
   },
-  "author": "leo.yy",
+  "author": {
+    "name": "leo.yy"
+  },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bluelight598/fedtools/issues"
+    "url": "https://github.com/Bairongs/br-fedtools/issues"
   },
+  "homepage": "https://github.com/Bairongs/br-fedtools#readme",
+  "contributors": [
+    {
+      "name": "leo.yy",
+      "email": "375543027@qq.com"
+    }
+  ],
   "dependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
     "cli-color": "^1.0.0",
+    "co": "^4.6.0",
     "colors": "*",
-    "commander": "^2.8.1"
+    "commander": "^2.8.1",
+    "css-loader": "^0.23.0",
+    "del": "^2.2.2",
+    "ejs-loader": "^0.2.1",
+    "expose-loader": "^0.7.1",
+    "express": "~4.13.4",
+    "fs-extra": "^0.30.0",
+    "git-tools": "^0.2.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-inline-css": "^3.1.0",
+    "gulp-inline-source": "^3.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-less": "^3.3.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.8",
+    "gulp-webpack": "^1.5.0",
+    "inquirer": "^1.0.3",
+    "jshint": "^2.9.4",
+    "jsx-loader": "^0.13.2",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "less-middleware": "^2.1.0",
+    "less-plugin-clean-css": "~1.5.1",
+    "promise": "^7.1.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "request": "^2.79.0",
+    "require": "^2.4.20",
+    "shelljs": "^0.7.0",
+    "style-loader": "^0.13.0",
+    "thunkify": "^2.1.2",
+    "underscore": "^1.8.3",
+    "urllib": "^2.13.0",
+    "webpack": "^1.12.15",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-zepto": "0.0.1"
   },
-  "homepage": "https://github.com/bluelight598/fedtools#readme"
+  "devDependencies": {
+    "fetch-ie8": "^1.4.0",
+    "imports-loader": "^0.6.5",
+    "mkdirp": "^0.5.1"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "keywords": [
+    "fedtools"
+  ],
+  "readme": "# 百融金服-前端FED工具\n# br-fedtools\n\n- web开发工程化工具\n- dev 启动本地服务器\n- build 打包工程目录src/p中所有index.js文件 到 build目录中\n\n## 安装及初始化工程\n\n* step.1  确保本机已经正常安装了NodeJS，以及npm可以正常使用。\n\t* 检测方法：请在bash下，输入\n\t\t\t\n\t\t\tnode -v && npm -v  // 返回两个版本号即为安装正常\n\t\t\t\n\t\t\t例：\n\t\t\tbogon:br-fedtools leo.yy$ node -v && npm -v\n\t\t\tv4.4.4\n\t\t\t2.15.1\n\t\t\tnode环境正常\n\t\t\n\t* 安装方法请见：[NodeJS官网](http://nodejs.cn/)\n\n* step.2  全局安装\n\t*  **sudo npm install br-bid -g**\n\t*  **sudo npm install gulp** \n* step.3  创建新建工程目录并进入 **mkdir project1 && cd project1** \n* step.4  使用bid命令初始化工程 **bid init**\n\n  *  如果安装依赖时出现问题，请使用 bid update命令重新安装。update命令具体使用方法请看下文。\n\n## 开发调试\n\n* 启动本地开发环境： **bid dev**\n\n* `注意：一定要在项目工程目录下启动开发调试命令，否则将不能正确解析提取资源文件`\n\n## 编译打包\n\n* 本地编译打包： **bid build -l (默认)**\n\n* 云编译打包： 后续开发...  **bid build (暂时不可用)**\n\n* 注意：`使用打包功能前，请确认您已经全局安装了gulp模块： sudo npm install gulp -g `\n\n## 配置文件config.js（打包编译、js引用）\n\n* 示例说明：\n\t\n\t```\n\t{\n\t\t\"appName\": \"\",\n\t\t\"publish\": {\n\t\t\t\"daily\": {\n\t\t\t\t\"host\": \"192.168.180.10\",\n\t\t\t\t\"path\": \"/opt/www/build/\"\n\t\t\t},\n\t\t\t\"pre\": {\n\t\t\t\t\"host\": \"123.57.42.161\",\n\t\t\t\t\"path\": \"/opt/www/build/\"\n\t\t\t},\n\t\t\t\"online\": [{\n\t\t\t\t\"host\": \"101.201.199.232\",\n\t\t\t\t\"path\": \"/opt/www/build/\"\n\t\t\t},{\n\t\t\t\t\"host\": \"123.57.74.74\",\n\t\t\t\t\"path\": \"/opt/www/build/\"\n\t\t\t}]\n\t\t},\n\t\t\"remotes\": \"http://gitlab.100credit.cn/fed/xiaqiu.git\",\n\t\t\"version\": \"0.0.1\",\n\t\t\"cdnhost\": \"//cdn.shuquwangluo.cn\",\n\t\t\"publishAPI\": \"http://192.168.0.243:3000/api/awp/publishOnline.do\",\n\t\t\"alias\": {\n\t\t\t\"zepto\": \"webpack-zepto\",\n\t\t\t\"myslider\": \"@br/common/myslider\",\n\t\t\t\"myslider\": \"../../c/common/myslider\"\n\t\t},\n\t\t\"extract-common-to-path\": \"./src/p/library.min.js\",\n\t\t\"noParse\": ['./src/p/index/index.js']\n\t}\n\t```\n\n* \"remotes\" (git版本库地址):\n\t* 说明:\n\t\t* 发布时脚本需要拉取当前git仓库及相应分支，使用远端脚本发布必填字段。\n* \"version\" (string 版本号):\n\t* 说明:\n\t\n\t\t* 前端工程推荐采用git分支开发，开发分支命名规则为：daily/x.y.z\n\t\t\n\t\t* 约定 `version` 值为当前开发分支的分支号x.y.z\n\t\t\n\t\t* 约定HTML页面js入口资源引入方式：\t\n\t\t\n\t\t\t\t<script type=\"text/javascript\" src=\"./@version/index.js\"></script>\n\t\t\n\t\t* `@version`将会在进行`bid build`后,被替换为`version`字段；js打包路径`/build/src/p/js入口文件名/@version/index.js`的@version也同时会被替换为版本号。\n\t\t\n\t\t* 根据分支号设置路径，主要目的是便于发布后对代码进行管理、引用、回滚等操作。\n\t\t\n\t* 注意：每次启动`bid dev`时，如果当前处于daily/x.y.z分支，且config.json的version字段与当前分支号不一致，config.json的version字段将被自动替换为当前分支号。\n\n* \"cdnhost\" (前端js静态资源cdn域名):\n\t* 说明:\n\t\t* 用于在发布时，使用线上cdn地址，替换html中形如`<script type=\"text/javascript\" src=\"@cdnhost/src/p/feedback/@version/index.js\"></script>`的文件引用。\n\t\t* 替换规则：\n\t\t\t* 形如`@cdnhost/src/p/feedback/@version/index.js`将会被替换为`//cdn.shuquwangluo.cn/xiaqiu/src/p/about/0.2.1/index.js`\n\t\t\t* cdnhost将会替换`@cdnhost`\n\t\t\t* version将会替换`cdnhost + appName + `\n\t\t\t* 以上示例地址`@cdnhost/src/p/feedback/@version/index.js`将做如下转换：@cdnhost + appName + `/src/p/feedback/` + version + `/index.js`\n\n* \"publishAPI\"（发布后台接口地址）\n\n\t* 说明:\n\t\t* `发布后台接口`接收`bid deploy`命令生成出来的`build.json`，并根据`build.json`进行发布\n\t\t* 发布流程\n\t\t\t* api接收`build.json`并将其存储至本地`$BuildJSONPath`（存储后的路径）位置（作为shell读取配置之用）\n\t\t\t* 调用服务端shell脚本并传递生成的`build.json`路径`$BuildJSONPath`\n\t\t\t* shell根据`build.json`中的`remote`及`version`检出相应git分支，并执行`bid update`更新依赖\n\t\t\t* 执行`gulp deploy --entry $BuildJSONPath --env $BuildJSONPath.env`进行构建\n\t\t\t* 同时shell将构建日志输出至指定文件中\n\t\t\t* 构建完毕后，根据`build.json`中的env及publish配置执行发布\n\t\n* \"alias\" (object):\n \n\t*  别名,通过别名约定，可以使我们在业务代码中直接require([key])引用js模块。\n\t\n\t\t| -----| key[JS模块别名] | value[模块npm名称 或 模块在项目中的地址] |\n\t\t| -----| -----|:----:|\n\t\t| node模块别名|\"zepto\"|\"webpack-zepto\"|\n\t\t| 约定common模块别名（src/c/common）|\"myslider\"|\"@br/common/myslider\"|\n\t\t| 上例等同于：|\"myslider\"|\"../../c/common/myslider\"|\n\n\t*  通过别名的定义，我们可以在业务代码中直接使用``require([别名])``引用js模块\n\t\n\t\t\t\tvar myslider = require(\"@br/common/myslider\");\n\t\t\t\t// 等同于 var myslider = require(\"../../c/common/myslider\");\n\t\t\t\tvar $ = require(\"zepto\");\n\t\t\t\t\n* \"extract-common-to-path\"(String，相对通用js打包输出路径)\n  * 字段说明：是否需要提取全部的公共js模块\n  \n\t| 示例 | 说明 |\n\t| -----|:----:|\n\t| \"extract-common-to-path\":false|不对通用的js模块进行提取及单独打包|\n\t| \"extract-common-to-path\":\"./src/p/library.min.js\"|将通用的js模块提取并打包至/build/src/p/library.min.js文件|\n\n* \"noParse\"(String或Array，不检查配置路径所指向js的依赖)\n  * 字段说明：如果你确定一个模块中没有其它新的依赖就可以配置这项，webpack 将不再扫描这个文件中的依赖\n  \n\t| 示例 | 说明 |\n\t| -----|:----:|\n\t| \"noParse\":\"./src/p/library.min.js\"|不检查配置路径所指向js的依赖|\n\t| \"extract-common-to-path\":[\"./src/p/library.min.js\",\"./src/p/lib.min.js\"]|忽略检查\"./src/p/library.min.js\"和\"./src/p/lib.min.js\"的依赖|\n\n* \"appName\" (string 工程名称):\n\t* 说明:\n\t\t* 项目名称将决定日常、预发及线上部署时的部署路径；\n\t\t\t* 日常地址：http://dym.100credit.com/工程名称/src/p/demo/index.html\n\t\t\t* 预发地址：http://pre.100credit.com/工程名称/src/p/demo/index.html\n\t\t\t* 线上地址：http://m.100credit.com/工程名称/src/p/demo/index.html\n\t\t* 进行日常发布时，请配置正确appName\n\n* \"publish\" (object 发布相关配置项)\n\t* \"daily\" (array 数组，其中每个元素为对象)\n\t\t* \"host\" (string 日常服务器Host（域名或IP地址）):\n\t\t\t* 说明:\n\t\t\t\t* 进行日常发布时，请配置正确信息\n\t\t\t\t* 错误的daily.host将导致日常发布失败\n\n\t\t* \"path\" (string 日常服务器发布路径):\n\t\t\t* 说明:\n\t\t\t\t* 默认为'/opt/www/build/',一般情况下无需修改此配置\n\t\t\t\t* 进行日常发布时，请配置正确path\n\n\t* \"pre\" (array 数组，其中每个元素为对象)\n\t\t* \"host\" (string 预发服务器Host（域名或IP地址）):\n\t\t\t* 说明:\n\t\t\t\t* 进行日常发布时，请配置正确信息\n\t\t\t\t* 错误的daily.host将导致日常发布失败\n\n\t\t* \"path\" (string 日常服务器发布路径):\n\t\t\t* 说明:\n\t\t\t\t* 默认为'/opt/www/build/',一般情况下无需修改此配置\n\t\t\t\t* 进行日常发布时，请配置正确path\n\n\t* \"online\" (array 数组，其中每个元素为对象）\n\t\t* \"host\" (string 线上服务器Host（域名或IP地址）):\n\t\t\t* 说明:\n\t\t\t\t* 进行线上发布时，请配置正确的信息\n\t\t\t\t* 错误的online.host将导致线上发布失败\n\n\t\t* \"path\" (string 日常服务器发布路径):\n\t\t\t* 说明:\n\t\t\t\t* 默认为'/opt/www/build/',一般情况下无需修改此配置\n\t\t\t\t* 进行线上发布时，请配置正确的online.path\n\n## bid命令详解\n\n| -----| 命令|参数|描述|\n| -----| -----| -----|:----:|\n|项目初始化|bid init|无|在当前目录下，生成初始`普通`工程目录文件 及 完成相关依赖安装|\n||..|-r\\|--react|在当前目录下，生成初始`react+redux`工程目录文件 及 完成相关依赖安装|\n|依赖更新|bid update|无|更新当前工程中相关依赖node_module(当build出现依赖问题时，可尝试对依赖进行更新后重试)|\n||..|-q\\|--quiet(可选)|（开启安静模式进行升级）|\n||..|-f\\|--force(可选)|（对全局bid工具的依赖模块进行强制更新安装，用以解决bid依赖版本过低或安装不全的问题）|\n|开发调试|bid dev|无|启动本地开发环境（默认端口号3333）|\n| |bid dev|-p [端口号] \\| --port [端口号]|以指定[端口号]启动本地开发环境|\n||..|-q\\|--quiet(可选)|（开启安静模式进行本地开发，只会显示webpack警告和错误）|\n|项目打包|bid build|无|进行本地编译打包|\n||..|-d\\|--publishdaily|(可选)进行编译打包并上传至【日常】服务器|\n||..|-p\\|--publishpre|(可选)进行编译打包并上传至【预发】阿里云服务器|\n||..|-o\\|--publishonline|(可选)进行编译打包并上传至【线上】阿里云服务器|\n||..|-a\\|--buildall(可选)|对全部src/p/xxx.html进行构建）|\n||..|-q\\|--quiet(可选)|开启安静模式|\n|iconfont ttf base64|bid iconfont|-i\\|--input <filePath>|对指定文件中的iconfont ttf进行base64转换|\n||..|-o\\|--output <filePath> (可选)|将转换后的内容输出值output文件（若没有指定output则替换原有input文件）|\n||..|相关示例|bid iconfont -i src/c/less/iconfont.less -o src/c/less/iconfont.less|\n\n* 进行日常构建发布时，会自动在项目根目录生成build.json文件\n\n## 说明\n\n* 全部nodejs依赖均通过本模块的node_module进行加载。\n\n* 目前集成了zepto、underscore，可手动require进行加载：\n\t* var $ = require('zepto');\n\t* var _ = require('underscore');\n\n* 目前入口JS文件命名规则及路径必须约定为：`/src/p/**/index.js`。\n\n* 为了确保线上多台机器同时发布，请预先将本机的密钥复制并命名为线上服务器相应用户的 ~/.ssh/authorized_keys文件\n\n\t\t# 【本地本地】运行：\n\t\t\tssh-keygen -t rsa\n\t\t\n\t\t# 结果如下\n\t\t\tGenerating public/private rsa key pair.\n\t\t\tEnter file in which to save the key (/home/.username/ssh/id_rsa):#回车\n\t\t\tEnter passphrase (empty for no passphrase):#回车\n\t\t\tEnter same passphrase again:#回车\n\t\t\tYour identification has been saved in /home/.username /.ssh/id_rsa.\n\t\t\tYour public key has been saved in /home/.username /.ssh/id_rsa.pub.\n\t\t\tThe key fingerprint is:\n\t\t\t38:25:c1:4d:5d:d3:89:bb:46:67:bf:52:af:c3:17:0c username@localhost\n\t\t\tGenerating RSA keys:\n\t\t\tKey generation complete.\n\n\t\t# 会在用户目录~/.ssh/产生两个文件，id_rsa，id_rsa.pub\n\n\t\t# 把【主机本地】上的id_rsa.pub文件拷贝到【线上主机】的该用户主目录下的.ssh目录下,并且改名为authorized_keys\n\n\t\t# 使用命令：\n\t\t\tscp 文件名 用户名@服务器:远端路径 进行拷贝\n\n已经支持React，推荐使用React+Redux进行开发。\n",
+  "readmeFilename": "README.md",
+  "gitHead": "cc537b1bc37a9559c58f0a6beaee095a7f089251",
+  "_id": "br-bid@0.1.9",
+  "_shasum": "0d2c78b0871552441b23d10af3c9ab0e46893066",
+  "_from": "br-bid@latest"
 }
